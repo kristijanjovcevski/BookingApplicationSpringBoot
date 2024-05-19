@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <form method="post" action="/add/reservation">
+
+            <label> Choose apartment <br>
+
+                <select name="id">
+
+                    <option  th:each="apartment : ${apartments}"
+                            th:selected="${apartment.getId() == apartments[1].getId()}"
+                            th:value="${apartment.getId()}" th:text="${apartment.getApartmentName()}"></option>
+                </select>
+            </label> <br>
+        <label> Choose term <br>
+            <input type="datetime-local" name="localDateTime">
+        </label>
+
+        <button type="submit"> Create new reservation</button>
+    </form>
+</div>
+
+</body>
+</html>

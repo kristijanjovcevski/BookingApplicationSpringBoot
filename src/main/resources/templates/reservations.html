@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+
+    <div>
+        <p>Reservations:</p>
+
+        <th:block th:each="reservation : ${reservations}">
+
+            <a th:href="@{'/add/reservation/booklist/' + ${reservation.getId()}}"></a>
+
+            <p th:text="${reservation.getLocalDateTime()}"></p>
+
+            <p th:text="${reservation.apartment.getApartmentName()}"></p>
+
+            <a th:href="@{'/add/reservation/booklist/{id}' (id=${reservation.getId()})}">Add reservation to Book List</a>
+
+        </th:block>
+
+        <a href="add/reservation">Add reservation</a><br>
+
+    </div>
+
+</body>
+</html>

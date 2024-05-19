@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <form method="post" action="/clear">
+    <div th:each="reservation : ${dtoListReservations.reservations}">
+        <p th:text="${reservation.reservation.apartment.getApartmentName()}"></p>
+        <p th:text="${reservation.pricePerNight}"></p>
+    </div>
+        <button type="submit">Book now</button>
+    </form>
+
+
+    <p th:text="${dtoListReservations.totalPrice}"></p>
+
+
+</div>
+
+</body>
+</html>
