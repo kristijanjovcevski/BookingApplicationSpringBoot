@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:5173","https://book-reservation-for-apartment-42mn.vercel.app"})
+@CrossOrigin(origins = {"https://bookapartment.vercel.app/"})
 public class AuthRestController {
 
     private final PersonService personService;
