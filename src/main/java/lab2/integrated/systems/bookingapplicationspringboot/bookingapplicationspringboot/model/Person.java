@@ -26,10 +26,12 @@ public class Person  {
     @Enumerated(value = EnumType.STRING)
     private Role role;
 
-    public Person(String password, String email, String username, Role role) {
-        this.password = password;
-        this.email = email;
+    public Person(String username, String email, String password, Role role) {
+
+
         this.username = username;
+        this.email = email;
+        this.password = password;
         this.role = role;
     }
 }

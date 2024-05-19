@@ -1,7 +1,7 @@
 package lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.web.rest;
 
-import lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.dto.LoginDto;
-import lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.dto.RegisterDto;
+import lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.model.dto.LoginDto;
+import lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.model.dto.RegisterDto;
 import lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.model.exceptions.*;
 import lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.service.PersonService;
 import org.springframework.http.HttpStatus;

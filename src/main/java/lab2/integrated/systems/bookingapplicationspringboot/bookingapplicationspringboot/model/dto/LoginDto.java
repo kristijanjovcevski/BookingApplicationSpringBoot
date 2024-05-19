@@ -1,4 +1,4 @@
-package lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.dto;
+package lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.model.dto;
 
 import lombok.Getter;
 import lombok.Setter;

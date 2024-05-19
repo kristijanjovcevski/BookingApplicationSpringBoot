@@ -79,7 +79,6 @@ public class PersonServiceImpl implements PersonService {
 
         if (passwordEncoder.matches(password, hashedPasswordFromDatabase)) {
             return person;
-
         }
 
         else{

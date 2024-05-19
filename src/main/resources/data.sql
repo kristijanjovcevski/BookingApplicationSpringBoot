@@ -7,6 +7,7 @@ TRUNCATE TABLE apartment;
 
 
 
+;
 
 
 
