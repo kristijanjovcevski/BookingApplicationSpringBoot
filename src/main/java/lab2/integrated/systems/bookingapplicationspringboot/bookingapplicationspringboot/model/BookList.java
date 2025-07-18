@@ -7,7 +7,6 @@ import java.util.List;
 
 @Data
 @Entity
-
 public class BookList {
 
     @Id
@@ -30,6 +29,10 @@ public class BookList {
 
     public BookList(User customer) {
         this.customer = customer;
+    }
+
+    public BookList() {
+
     }
 
     @Override

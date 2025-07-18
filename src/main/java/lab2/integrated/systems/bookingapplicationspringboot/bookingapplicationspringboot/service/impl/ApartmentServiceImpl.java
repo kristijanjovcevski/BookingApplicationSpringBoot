@@ -3,7 +3,6 @@ package lab2.integrated.systems.bookingapplicationspringboot.bookingapplications
 import lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.model.Apartment;
 import lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.model.exceptions.ApartmentNotFoundException;
 import lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.repository.ApartmentRepository;
-import lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.repository.ReservationRepository;
 import lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.service.ApartmentService;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +13,9 @@ public class ApartmentServiceImpl implements ApartmentService {
 
     private final ApartmentRepository apartmentRepository;
 
-    private final ReservationRepository reservationRepository;
-
-    public ApartmentServiceImpl(ApartmentRepository apartmentRepository, ReservationRepository reservationRepository) {
+    public ApartmentServiceImpl(ApartmentRepository apartmentRepository) {
         this.apartmentRepository = apartmentRepository;
-        this.reservationRepository = reservationRepository;
+
     }
 
 
