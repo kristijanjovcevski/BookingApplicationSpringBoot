@@ -1,0 +1,15 @@
+version: "3"
+services:
+  db:
+    image: "postgres"
+    container_name: "BookingApp2025"
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=ba2025
+      - POSTGRES_DB=bookingApp
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+volumes:
+  postgres-data:

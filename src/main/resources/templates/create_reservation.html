@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create title</title>
 </head>
 <body>
 
@@ -14,7 +14,7 @@
                 <select name="id">
 
                     <option  th:each="apartment : ${apartments}"
-                            th:selected="${apartment.getId() == apartments[1].getId()}"
+                            th:selected="${apartment.getId() == apartments[0].getId()}"
                             th:value="${apartment.getId()}" th:text="${apartment.getApartmentName()}"></option>
                 </select>
             </label> <br>

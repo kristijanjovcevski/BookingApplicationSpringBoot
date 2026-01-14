@@ -1,6 +1,0 @@
-package lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.service.impl;
-
-import lab2.integrated.systems.bookingapplicationspringboot.bookingapplicationspringboot.service.AdministratorService;
-
-public class AdministratorServiceImpl implements AdministratorService {
-}
