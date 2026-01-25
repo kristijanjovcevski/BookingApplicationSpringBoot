@@ -2,7 +2,11 @@ package lab2.integrated.systems.bookingapplicationspringboot.web.rest;
 
 import lab2.integrated.systems.bookingapplicationspringboot.model.dto.LoginDto;
 import lab2.integrated.systems.bookingapplicationspringboot.model.dto.RegisterDto;
-import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.*;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.conflict.EmailAlreadyExistsException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.InvalidArgumentsException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.conflict.UsernameAlreadyExistsException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.unauthorized.PasswordsDoNotMatchException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.unauthorized.TermsOfServiceException;
 import lab2.integrated.systems.bookingapplicationspringboot.service.PersonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +26,7 @@ public class AuthRestController {
         this.personService = personService;
     }
 
-    @PostMapping("/login")
+   /* @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDto login
                                    ){
         try {
@@ -32,11 +36,11 @@ public class AuthRestController {
             return ResponseEntity.ok().build();
 
 
-        }catch (InvalidArgumentsException exception){
+        } catch (InvalidArgumentsException exception){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
 
         }
-    }
+    }*/
 
 
     @PostMapping("/register")

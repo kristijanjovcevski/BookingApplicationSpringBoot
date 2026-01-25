@@ -5,7 +5,7 @@ import lab2.integrated.systems.bookingapplicationspringboot.model.BookReservatio
 import lab2.integrated.systems.bookingapplicationspringboot.model.Reservation;
 import lab2.integrated.systems.bookingapplicationspringboot.model.dto.AddReservationToBookListdto;
 import lab2.integrated.systems.bookingapplicationspringboot.model.embedded.BookReservationId;
-import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.BookListNotFoundException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.notFound.BookListNotFoundException;
 import lab2.integrated.systems.bookingapplicationspringboot.repository.BookListRepository;
 import lab2.integrated.systems.bookingapplicationspringboot.repository.BookReservationRepository;
 import lab2.integrated.systems.bookingapplicationspringboot.service.ApartmentService;

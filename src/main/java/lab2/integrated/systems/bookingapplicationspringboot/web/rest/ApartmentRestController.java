@@ -1,6 +1,7 @@
 package lab2.integrated.systems.bookingapplicationspringboot.web.rest;
 
 import lab2.integrated.systems.bookingapplicationspringboot.model.Apartment;
+import lab2.integrated.systems.bookingapplicationspringboot.model.dto.ApartmentDto;
 import lab2.integrated.systems.bookingapplicationspringboot.service.ApartmentService;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,12 +14,8 @@ public class ApartmentRestController {
 
     private final ApartmentService apartmentService;
 
-
-
     public ApartmentRestController(ApartmentService apartmentService ) {
         this.apartmentService = apartmentService;
-
-
     }
     @GetMapping
     public List<Apartment> findAll(){
@@ -35,9 +32,7 @@ public class ApartmentRestController {
     @PostMapping("/create")
     public Apartment create(@RequestBody Apartment apartment){
 
-         return this.apartmentService.createApartment(apartment.getApartmentName(),
-                apartment.getCity(), apartment.getDescription(), apartment.getPricePerNight(),
-                apartment.getRating());
+         return this.apartmentService.createApartment(ApartmentDto.of(apartment));
     }
 
 

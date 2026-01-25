@@ -1,7 +1,8 @@
 package lab2.integrated.systems.bookingapplicationspringboot.service.impl;
 
 import lab2.integrated.systems.bookingapplicationspringboot.model.Apartment;
-import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.ApartmentNotFoundException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.dto.ApartmentDto;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.notFound.ApartmentNotFoundException;
 import lab2.integrated.systems.bookingapplicationspringboot.repository.ApartmentRepository;
 import lab2.integrated.systems.bookingapplicationspringboot.service.ApartmentService;
 import org.springframework.stereotype.Service;
@@ -18,24 +19,20 @@ public class ApartmentServiceImpl implements ApartmentService {
 
     }
 
-
     @Override
     public List<Apartment> getAllApartments() {
         return this.apartmentRepository.findAll();
     }
 
     public Apartment getApartmentById(Long id){
-
-
         return this.apartmentRepository.findById(id).orElseThrow(() -> new ApartmentNotFoundException(id));
     }
 
     @Override
-    public Apartment createApartment(String apartmentName, String city,
-                                     String description, int pricePerNight, double rating) {
-
-        return this.apartmentRepository.save(new Apartment(apartmentName,city,description,
-                pricePerNight, rating));
+    public Apartment createApartment(ApartmentDto apartmentDto) {
+        Apartment apartment = new Apartment(apartmentDto.getApartmentName(), apartmentDto.getCity(), apartmentDto.getDescription(),
+                apartmentDto.getPricePerNight(), apartmentDto.getRating());
+        return this.apartmentRepository.save(apartment);
     }
 
     @Override
@@ -49,8 +46,6 @@ public class ApartmentServiceImpl implements ApartmentService {
         apartment.setRating(apartmentParam.getRating());
 
         return this.apartmentRepository.save(apartment);
-
-
     }
 
     @Override

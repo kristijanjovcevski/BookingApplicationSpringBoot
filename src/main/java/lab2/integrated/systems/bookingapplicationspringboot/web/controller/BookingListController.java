@@ -3,7 +3,7 @@ package lab2.integrated.systems.bookingapplicationspringboot.web.controller;
 import lab2.integrated.systems.bookingapplicationspringboot.model.BookList;
 import lab2.integrated.systems.bookingapplicationspringboot.model.BookReservation;
 import lab2.integrated.systems.bookingapplicationspringboot.model.dto.ShowReservationsToBookListdto;
-import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.BookListNotFoundException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.notFound.BookListNotFoundException;
 import lab2.integrated.systems.bookingapplicationspringboot.repository.BookListRepository;
 import lab2.integrated.systems.bookingapplicationspringboot.repository.BookReservationRepository;
 import org.springframework.stereotype.Controller;

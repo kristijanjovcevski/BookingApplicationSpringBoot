@@ -4,10 +4,10 @@ import lab2.integrated.systems.bookingapplicationspringboot.model.BookList;
 import lab2.integrated.systems.bookingapplicationspringboot.model.Person;
 import lab2.integrated.systems.bookingapplicationspringboot.model.User;
 import lab2.integrated.systems.bookingapplicationspringboot.model.enums.Role;
-import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.EmailAlreadyExistsException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.conflict.EmailAlreadyExistsException;
 import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.InvalidArgumentsException;
-import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.PasswordsDoNotMatchException;
-import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.UsernameAlreadyExistsException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.unauthorized.PasswordsDoNotMatchException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.conflict.UsernameAlreadyExistsException;
 import lab2.integrated.systems.bookingapplicationspringboot.repository.BookListRepository;
 import lab2.integrated.systems.bookingapplicationspringboot.repository.PersonRepository;
 import lab2.integrated.systems.bookingapplicationspringboot.repository.UserRepository;
@@ -66,7 +66,6 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-
     public Person login(String email, String password) {
 
         if (email.isEmpty() || password.isEmpty())
@@ -74,22 +73,16 @@ public class PersonServiceImpl implements PersonService {
 
         Person person = this.personRepository.findByEmail(email).orElseThrow(InvalidArgumentsException::new);
 
-
         String hashedPasswordFromDatabase = person.getPassword();
 
-        if (passwordEncoder.matches(password, hashedPasswordFromDatabase)) {
+        if (passwordEncoder.matches(password, hashedPasswordFromDatabase))
             return person;
-        }
 
-        else{
-            throw new InvalidArgumentsException();
-        }
-
+        throw new InvalidArgumentsException();
     }
 
     @Override
     public Person findByUsername(String username) {
-
         return this.personRepository.findByUsername(username).orElseThrow(null);
     }
 

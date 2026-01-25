@@ -1,6 +1,7 @@
 package lab2.integrated.systems.bookingapplicationspringboot.service.unit;
 
 import lab2.integrated.systems.bookingapplicationspringboot.model.Apartment;
+import lab2.integrated.systems.bookingapplicationspringboot.model.dto.ApartmentDto;
 import lab2.integrated.systems.bookingapplicationspringboot.repository.ApartmentRepository;
 import lab2.integrated.systems.bookingapplicationspringboot.service.impl.ApartmentServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -43,8 +44,7 @@ public class ApartmentServiceTest {
     void testCreateApartment() {
         Apartment apartment = new Apartment("Mizo","Ohrid","Super",100,4.9);
         Mockito.when(apartmentRepository.save(apartment)).thenReturn(apartment);
-        assertEquals(this.apartmentService.createApartment(apartment.getApartmentName(), apartment.getCity(), apartment.getDescription(), apartment.getPricePerNight(),
-                apartment.getRating()).getApartmentName(), apartment.getApartmentName());
+        assertEquals(this.apartmentService.createApartment(ApartmentDto.of(apartment)).getApartmentName(), apartment.getApartmentName());
         Mockito.verify(apartmentRepository).save(apartment);
     }
     @Test

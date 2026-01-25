@@ -27,8 +27,6 @@ public class Person  {
     private Role role;
 
     public Person(String username, String email, String password, Role role) {
-
-
         this.username = username;
         this.email = email;
         this.password = password;

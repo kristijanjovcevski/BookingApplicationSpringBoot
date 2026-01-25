@@ -1,32 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
     <div>
-        <form method="post" action="/add/apartment">
-
-            <label> Add apartment name
+        <form method="post" action="/add/apartment" th:object="${apartment}">
+            <label> Add apartment name <!-- no need for th:field -> only name would do the job for binding but recommended-->
                 <input type="text" name="apartmentName">
             </label> <br>
+            <span th:if="${#fields.hasErrors('apartmentName')}" th:errors="*{apartmentName}"></span> <br>
 
             <label> Add Apartment City
-                <input type="text" name="city">
+                <input type="text" name="city">  <!-- *{city} = ${apartment.city} -->
             </label> <br>
+            <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span> <br>
 
             <label> Add Apartment Description
-                <input type="text" name="description">
+                <input type="text" th:field="*{description}">
             </label> <br>
+            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span> <br>
 
             <label> Add Apartment Price per night
-                <input type="text" name="pricePerNight">
+                <input type="text" th:field="*{pricePerNight}">
             </label> <br>
+            <span th:if="${#fields.hasErrors('pricePerNight')}" th:errors="*{pricePerNight}"></span> <br>
 
             <label> Add rating
-                <input type="number" name="rating" step="0.1">
+                <input type="number" step="0.1" th:field="*{rating}">
             </label> <br>
+            <span th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}"></span> <br>
 
             <button type="Submit">Add new apartment</button>
         </form>

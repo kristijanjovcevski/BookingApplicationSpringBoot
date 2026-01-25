@@ -28,8 +28,8 @@ public class DataLoader {
     public void initAdministrators(){
 
         if (this.personRepository.findByEmail("admin@outlook.com").isEmpty()){
-            Person person = this.personRepository.save(new Person(passwordEncoder.encode("admin"),
-                    "admin@outlook.com","admin", Role.ROLE_Admin));
+            Person person = this.personRepository.save(new Person("admin",
+                    "admin@outlook.com", passwordEncoder.encode("admin"), Role.ROLE_Admin));
 
             this.administratorRepository.save(new Administrator(person));
         }

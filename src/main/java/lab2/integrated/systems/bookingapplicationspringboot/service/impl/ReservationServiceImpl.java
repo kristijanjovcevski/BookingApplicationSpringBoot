@@ -2,8 +2,8 @@ package lab2.integrated.systems.bookingapplicationspringboot.service.impl;
 
 import lab2.integrated.systems.bookingapplicationspringboot.model.Apartment;
 import lab2.integrated.systems.bookingapplicationspringboot.model.Reservation;
-import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.ApartmentNotFoundException;
-import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.ReservationNotFoundException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.notFound.ApartmentNotFoundException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.notFound.ReservationNotFoundException;
 import lab2.integrated.systems.bookingapplicationspringboot.repository.ApartmentRepository;
 import lab2.integrated.systems.bookingapplicationspringboot.repository.ReservationRepository;
 import lab2.integrated.systems.bookingapplicationspringboot.service.ReservationService;
