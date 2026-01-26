@@ -30,8 +30,9 @@ public class ApartmentServiceImpl implements ApartmentService {
 
     @Override
     public Apartment createApartment(ApartmentDto apartmentDto) {
+        //Integer.parseInt(apartmentDto.getPricePerNight());
         Apartment apartment = new Apartment(apartmentDto.getApartmentName(), apartmentDto.getCity(), apartmentDto.getDescription(),
-                apartmentDto.getPricePerNight(), apartmentDto.getRating());
+                apartmentDto.getPricePerNight().intValue(), apartmentDto.getRating());
         return this.apartmentRepository.save(apartment);
     }
 

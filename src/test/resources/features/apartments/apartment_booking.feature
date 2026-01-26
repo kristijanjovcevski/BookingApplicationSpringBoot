@@ -18,42 +18,62 @@ Feature: Add New Apartment
 #    Then user is redirected to apartments page and the apartment is added to the apartment list
 
   @regression @negative
-  Scenario Outline: Add apartment form rejects invalid inputs
-    When the user attempts to create apartment with completely invalid data
-      | apartmentName   | <apartmentName>   |
-      | city            | <city>            |
-      | description     | <description>     |
-      | pricePerNight   | <pricePerNight>   |
-      | rating          | <rating>          |
+  Scenario Outline: Apartment name must start with a letter
+    When the user submits the apartment with "<field>" invalid value "<value>"
+      | apartmentName | Good hotel |
+      | city          | New York   |
+      | description   | Nice view  |
+      | pricePerNight | 100        |
+      | rating        | 4.5        |
     And the user submits the form
-    Then validation errors should be displayed
+    Then the validation error for "<field>" should be displayed
 
     Examples:
-      | apartmentName | city | description | pricePerNight | rating | field         | expected_error                       |
-      | 1             |      | true        | 2.5           | Five   | apartmentName | Apartment name must be a text!       |
-      | Luxury Apt    |      | Nice place  | 100           | 4.5    | city          | City name is required!               |
-      | Luxury Apt    | Skopje |           | 100           | 4.5    | description   | Description must be a text!          |
-      | Luxury Apt    | Skopje | Nice place| 2.5           | 4.5    | pricePerNight | Price must be an integer!            |
-      | Luxury Apt    | Skopje | Nice place| 100           | Five   | rating        | Rating must be text!                 |
+      | field         | value                                                  |
+      | apartmentName | 1                                                      |
+      | apartmentName | !apt                                                   |
+      | apartmentName | 2.5                                                    |
+      | apartmentName | -3.4                                                   |
+      | apartmentName | -2                                                     |
+      | apartmentName | fieojfiwoaejfwiowejfriowejrfiowejiweiowejrioweriojweio |
 
 
-#  @negative
-#  Scenario Outline: Cannot add apartment with invalid data
-#    Given the user is on the add apartment page
-#    When the user submits apartment with invalid <field> as <value>
-#    Then an error message "<error>" should be displayed
-#    And the user remains on the add apartment page
-#
-#    Examples:
-#      | field       | value           | error                          |
-#      | price       | -100            | Price must be positive         |
-#      | bedrooms    | 0               | Bedrooms must be at least 1    |
-#      | email       | invalid-email   | Please enter a valid email     |
-#      | name        |                 | Apartment name is required     |
-#
-#  @edge-case
-#  Scenario: Add apartment with special characters in name
-#    Given the user is on the add apartment page
-#    When the user submits apartment with name "Luxury & Co. Apartment #123"
-#    Then user is redirected to apartments page and the apartment is added to the apartment list
-#    And the apartment name appears correctly as "Luxury & Co. Apartment #123"
+  @regression @negative
+  Scenario Outline: City must start with a letter and must not be empty
+    When the user submits the apartment with "<field>" invalid value "<value>"
+      | apartmentName | Good hotel |
+      | city          | New York   |
+      | description   | Nice view  |
+      | pricePerNight | 100        |
+      | rating        | 4.5        |
+    And the user submits the form
+    Then the validation error for "<field>" should be displayed
+
+    Examples:
+      | field | value                                                  |
+      | city  | 1                                                      |
+      | city  |                                                        |
+      | city  | -3.7                                                   |
+      | city  | -100                                                   |
+      | city  | 2.1                                                    |
+      | city  | fieojfiwoaejfwiowejfriowejrfiowejiweiowejrioweriojweio |
+
+
+  @regression @negative
+  Scenario Outline: Description of the apartment must start with a letter and must not be empty
+    When the user submits the apartment with "<field>" invalid value "<value>"
+      | apartmentName | Good hotel |
+      | city          | New York   |
+      | description   | Nice view  |
+      | pricePerNight | 100        |
+      | rating        | 4.5        |
+    And the user submits the form
+    Then the validation error for "<field>" should be displayed
+
+    Examples:
+      | field       | value                                                  |
+      | description | 1                                                      |
+      | description |                                                        |
+      | description | -3.7                                                   |
+      | description | -100                                                   |
+      | description | 2.1                                                    |

@@ -2,6 +2,7 @@ package lab2.integrated.systems.bookingapplicationspringboot.controller.integrat
 
 
 import lab2.integrated.systems.bookingapplicationspringboot.model.Apartment;
+import lab2.integrated.systems.bookingapplicationspringboot.model.dto.ApartmentDto;
 import lab2.integrated.systems.bookingapplicationspringboot.service.ApartmentService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -32,7 +33,7 @@ fake web server
 
 
 /*
-SpringBootTest.WebEnvironment.DEFINED_PORT,RANDOM_PORT etc, sets
+SpringBootTest.WebEnvironment.DEFINED_PORT,RANDOM_PORT etc., sets
 TestRestTemplate automatically configured to send requests to
 http://localhost at the running server's port.
 */
@@ -66,8 +67,7 @@ class ApartmentControllerIntegrationTest {
     @Test
     void deleteApartment_Success() {
         Apartment apartment = new Apartment("Mizo","Ohrid","Very Good",400,4.9);
-        Apartment savedApartment = apartmentService.createApartment(apartment.getApartmentName(), apartment.getCity(), apartment.getDescription(),
-                apartment.getPricePerNight(), apartment.getRating());
+        Apartment savedApartment = apartmentService.createApartment(ApartmentDto.of(apartment));
         MultiValueMap<String,String> params = new LinkedMultiValueMap<>();
         params.add("id",String.valueOf(savedApartment.getId()));
         restTemplate.postForEntity("/api/apartments/delete/" + savedApartment.getId(), params, String.class);

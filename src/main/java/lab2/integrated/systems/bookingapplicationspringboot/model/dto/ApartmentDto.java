@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
@@ -24,14 +26,14 @@ public class ApartmentDto {
     private String city;
 
     @NotBlank(message = "Description is required!")
-    @Pattern(regexp = "^[a-zA-Z].*", message = "Description must start with a letter!")
+    @Pattern(regexp = "^[a-zA-Z].*", message = "Description must be a text!")
     @Size(max = 100)
     private String description;
 
     @NotNull(message = "Price is required")
     @Min(value = 1)
     @Digits(integer = 4, fraction = 0,  message = "Phone number must have at most 10 digits and no decimal point")
-    private Integer pricePerNight;
+    private BigDecimal pricePerNight;
 
     @NotNull(message = "Rating is required!")
     @DecimalMin(value = "0.0", message = "Rating must be at least 0!")
@@ -43,7 +45,7 @@ public class ApartmentDto {
                 apartment.getApartmentName(),
                 apartment.getCity(),
                 apartment.getDescription(),
-                apartment.getPricePerNight(),
+                BigDecimal.valueOf(apartment.getPricePerNight()),
                 apartment.getRating()
         );
     }
