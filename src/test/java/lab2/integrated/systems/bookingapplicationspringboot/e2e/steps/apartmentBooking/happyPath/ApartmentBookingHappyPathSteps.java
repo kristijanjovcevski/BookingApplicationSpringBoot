@@ -1,13 +1,13 @@
-package lab2.integrated.systems.bookingapplicationspringboot.e2e.steps.apartment.happyPath;
+package lab2.integrated.systems.bookingapplicationspringboot.e2e.steps.apartmentBooking.happyPath;
 
 import com.codeborne.selenide.Selenide;
-import io.cucumber.java.en.Given;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import lab2.integrated.systems.bookingapplicationspringboot.e2e.steps.apartment.common.ApartmentBookingCommonSteps;
-import lombok.AllArgsConstructor;
 
-import static com.codeborne.selenide.Condition.text;
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverConditions.urlContaining;
 
@@ -24,14 +24,25 @@ public class ApartmentBookingHappyPathSteps {
         $("input[name='description']").setValue("Amazing");
         $("input[name='pricePerNight']").setValue("200");
         $("input[name='rating']").setValue("3.6");
-        $("button").click();
+    }
+
+    //  ========== Edge case FLOW STEPS ==========
+    @When("the user submits apartment field {string} with maximum allowed text length")
+    public void submitApartmentNameMaxLength(String field, DataTable dataTable) {
+        Map<String, String> data = dataTable.asMap(String.class, String.class);
+        $("input[name='apartmentName']").setValue(data.get("apartmentName"));
+        $("input[name='city']").setValue(data.get("city"));
+        $("input[name='description']").setValue(data.get("description"));
+        $("input[name='pricePerNight']").setValue(data.get("pricePerNight"));
+        $("input[name='rating']").setValue(data.get("rating"));
     }
 
     @Then("user is redirected to apartments page and the apartment is added to the apartment list")
     public void addApartmentForm() {
         Selenide.webdriver().shouldHave(urlContaining("/apartments"));
-        $$("p:nth-child(1+5n)").find(text("Dizzo"));
     }
+
+
 
     // ========== Negative FLOW STEPS ==========
 
