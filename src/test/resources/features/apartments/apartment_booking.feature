@@ -4,8 +4,10 @@ Feature: Add New Apartment
   I want to add new apartments to the system
   So that I can manage my rental properties
 
+
   Background:
     Given the user is on the add apartment page
+
 
   @smoke @regression @positive
   Scenario: Successfully add a new apartment with valid details
@@ -13,10 +15,6 @@ Feature: Add New Apartment
     And the user submits the form
     Then user is redirected to apartments page and the apartment is added to the apartment list
 
-#  @regression @positive @boundary
-#  Scenario: Add apartment with minimum required fields
-#    When the user submits valid apartment details
-#    Then user is redirected to apartments page and the apartment is added to the apartment list
 
   @smoke @regression @negative
   Scenario Outline: Apartment name must start with a letter
@@ -24,7 +22,7 @@ Feature: Add New Apartment
       | apartmentName | Good hotel |
       | city          | New York   |
       | description   | Nice view  |
-      | pricePerNight | 100        |
+      | pricePerNight | 200        |
       | rating        | 4.5        |
     And the user submits the form
     Then the validation error for "<field>" should be displayed
@@ -45,7 +43,7 @@ Feature: Add New Apartment
       | apartmentName | Good hotel |
       | city          | New York   |
       | description   | Nice view  |
-      | pricePerNight | 100        |
+      | pricePerNight | 200        |
       | rating        | 4.5        |
     And the user submits the form
     Then the validation error for "<field>" should be displayed
@@ -79,6 +77,7 @@ Feature: Add New Apartment
       | description | -100  |
       | description | 2.1   |
 
+
   @smoke @regression @negative
   Scenario Outline: Apartment price must be an integer
     When the user submits the apartment with "<field>" invalid value "<value>"
@@ -97,6 +96,7 @@ Feature: Add New Apartment
       | pricePerNight | -3     |
       | pricePerNight | 100000 |
       | pricePerNight | vbawr  |
+
 
   @smoke @regression @negative
   Scenario Outline: Apartment rating must be a decimal
@@ -117,14 +117,9 @@ Feature: Add New Apartment
       | pricePerNight | vbarw |
 
 
-  @smoke @edge_case @positive
-  Scenario Outline: Successfully save apartment with maximum allowed text length
-    When the user submits apartment field "<field>" with maximum allowed text length
-      | apartmentName | abcdefghijklmnopqrstuvwxyzoqpz |
-      | city          | New York                       |
-      | description   | Nice view                      |
-      | pricePerNight | 100                            |
-      | rating        | 4.5                            |
+  @smoke @edge_case
+  Scenario Outline: Successfully save apartment with maximum allowed apartment name length
+    When the user submits apartment field "<field>" with maximum allowed length
     And the user submits the form
     Then user is redirected to apartments page and the apartment is added to the apartment list
 
@@ -133,14 +128,9 @@ Feature: Add New Apartment
       | apartmentName |
 
 
-  @smoke @edge_case @positive
-  Scenario Outline: Successfully save apartment with maximum allowed name length
-    When the user submits apartment field "<field>" with maximum allowed text length
-      | apartmentName | oikq1fghijklooopqrstuvwxyzoqpz |
-      | city          | New York                       |
-      | description   | Nice view                      |
-      | pricePerNight | 100                            |
-      | rating        | 4.5                            |
+  @smoke @edge_case
+  Scenario Outline: Successfully save apartment with maximum allowed city name length
+    When the user submits apartment field "<field>" with maximum allowed length
     And the user submits the form
     Then user is redirected to apartments page and the apartment is added to the apartment list
 
@@ -149,19 +139,91 @@ Feature: Add New Apartment
       | city  |
 
 
-  @smoke @edge_case @positive
-  Scenario Outline: Successfully save apartment with maximum allowed name length
-    When the user submits apartment field "<field>" with maximum allowed text length
-      | apartmentName | Good hotel                                                                                         |
-      | city          | New York                                                                                           |
-      | description   | iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii |
-      | pricePerNight | 100                                                                                                |
-      | rating        | 4.5                                                                                                |
+  @smoke @edge_case
+  Scenario Outline: Successfully save apartment with maximum allowed description length
+    When the user submits apartment field "<field>" with maximum allowed length
     And the user submits the form
     Then user is redirected to apartments page and the apartment is added to the apartment list
 
     Examples:
       | field       |
       | description |
+
+
+  @smoke @edge_case
+  Scenario Outline: Successfully save apartment with maximum allowed price per night
+    When the user submits apartment field "<field>" with maximum allowed length
+    And the user submits the form
+    Then user is redirected to apartments page and the apartment is added to the apartment list
+
+    Examples:
+      | field         |
+      | pricePerNight |
+
+
+  @smoke @edge_case
+  Scenario Outline: Successfully save apartment with maximum allowed rating
+    When the user submits apartment field "<field>" with maximum allowed length
+    And the user submits the form
+    Then user is redirected to apartments page and the apartment is added to the apartment list
+
+    Examples:
+      | field  |
+      | rating |
+
+
+  @smoke @edge_case
+  Scenario Outline: Successfully save apartment with minimum allowed apartment name length
+    When the user submits apartment field "<field>" with minimum allowed length
+    And the user submits the form
+    Then user is redirected to apartments page and the apartment is added to the apartment list
+
+    Examples:
+      | field         |
+      | apartmentName |
+
+
+  @smoke @edge_case
+  Scenario Outline: Successfully save apartment with minimum allowed city length
+    When the user submits apartment field "<field>" with minimum allowed length
+    And the user submits the form
+    Then user is redirected to apartments page and the apartment is added to the apartment list
+
+    Examples:
+      | field |
+      | city  |
+
+
+  @smoke @edge_case
+  Scenario Outline: Successfully save apartment with minimum allowed description length
+    When the user submits apartment field "<field>" with minimum allowed length
+    And the user submits the form
+    Then user is redirected to apartments page and the apartment is added to the apartment list
+
+    Examples:
+      | field       |
+      | description |
+
+
+  @smoke @edge_case
+  Scenario Outline: Successfully save apartment with minimum allowed pricePerNight
+    When the user submits apartment field "<field>" with minimum allowed length
+    And the user submits the form
+    Then user is redirected to apartments page and the apartment is added to the apartment list
+
+    Examples:
+      | field         |
+      | pricePerNight |
+
+
+  @smoke @edge_case
+  Scenario Outline: Successfully save apartment with minimum allowed rating
+    When the user submits apartment field "<field>" with minimum allowed length
+    And the user submits the form
+    Then user is redirected to apartments page and the apartment is added to the apartment list
+
+    Examples:
+      | field  |
+      | rating |
 
 
