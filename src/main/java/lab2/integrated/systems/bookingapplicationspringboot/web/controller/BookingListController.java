@@ -63,12 +63,6 @@ public class BookingListController {
 
         this.bookReservationRepository.deleteAll(bookReservations);
 
-
-
-
-
-
-
         return "redirect:/bookings";
     }
 }

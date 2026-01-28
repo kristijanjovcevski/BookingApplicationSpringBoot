@@ -5,7 +5,7 @@ import lab2.integrated.systems.bookingapplicationspringboot.model.Person;
 import lab2.integrated.systems.bookingapplicationspringboot.model.User;
 import lab2.integrated.systems.bookingapplicationspringboot.model.enums.Role;
 import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.conflict.EmailAlreadyExistsException;
-import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.InvalidArgumentsException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.conflict.InvalidArgumentsException;
 import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.unauthorized.PasswordsDoNotMatchException;
 import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.conflict.UsernameAlreadyExistsException;
 import lab2.integrated.systems.bookingapplicationspringboot.repository.BookListRepository;

@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    /*@ExceptionHandler(ApartmentNotFoundException.class)
+    @ExceptionHandler(ApartmentNotFoundException.class)
     public String handleApartmentNotFound(ApartmentNotFoundException ex, Model model) {
         model.addAttribute("apartmentId", ex.getMessage());
-        return "add";
-    }*/
+        return "create_reservation";
+    }
 }

@@ -22,9 +22,8 @@
             <a th:href="@{'/add/reservation/booklist/{id}' (id=${reservation.getId()})}">Add reservation to Book List</a>
 
         </th:block>
-
+        <span th:if="${bookListId}" th:text="${bookListId}"></span>
         <a href="add/reservation">Add reservation</a><br>
-
     </div>
 
 </body>

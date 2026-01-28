@@ -1,12 +1,11 @@
 package lab2.integrated.systems.bookingapplicationspringboot.web.rest;
 
-import lab2.integrated.systems.bookingapplicationspringboot.model.dto.LoginDto;
 import lab2.integrated.systems.bookingapplicationspringboot.model.dto.RegisterDto;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.business.TermsOfServiceException;
 import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.conflict.EmailAlreadyExistsException;
-import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.InvalidArgumentsException;
+import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.conflict.InvalidArgumentsException;
 import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.conflict.UsernameAlreadyExistsException;
 import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.unauthorized.PasswordsDoNotMatchException;
-import lab2.integrated.systems.bookingapplicationspringboot.model.exceptions.unauthorized.TermsOfServiceException;
 import lab2.integrated.systems.bookingapplicationspringboot.service.PersonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

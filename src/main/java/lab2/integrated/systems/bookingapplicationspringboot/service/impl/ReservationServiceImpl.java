@@ -40,7 +40,5 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public Reservation findById(Long id) {
         return this.reservationRepository.findById(id).orElseThrow(() -> new ReservationNotFoundException(id));
-
-
     }
 }
