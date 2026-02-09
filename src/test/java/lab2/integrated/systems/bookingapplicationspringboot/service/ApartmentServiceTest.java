@@ -1,4 +1,4 @@
-package lab2.integrated.systems.bookingapplicationspringboot.service.unit;
+package lab2.integrated.systems.bookingapplicationspringboot.service;
 
 import lab2.integrated.systems.bookingapplicationspringboot.model.Apartment;
 import lab2.integrated.systems.bookingapplicationspringboot.model.dto.ApartmentDto;

@@ -32,7 +32,6 @@ public class ApartmentController {
     }
 
     @GetMapping("/add/apartment")
-
     public String addApartment(Model model) {
         model.addAttribute("apartment", new ApartmentDto());
         return "add";

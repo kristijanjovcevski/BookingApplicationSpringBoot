@@ -20,7 +20,6 @@ public class BookingListController {
     private final BookReservationRepository bookReservationRepository;
 
 
-
     public BookingListController(BookListRepository bookListRepository, BookReservationRepository bookReservationRepository) {
         this.bookListRepository = bookListRepository;
         this.bookReservationRepository = bookReservationRepository;
@@ -28,39 +27,28 @@ public class BookingListController {
     }
 
     @GetMapping("/bookings")
-
-    public String getBookingList(Model model){
+    public String getBookingList(Model model) {
 
         BookList bookList = this.bookListRepository.findById(102L).orElseThrow(() -> new BookListNotFoundException(102L));
 
         List<BookReservation> bookReservations = bookList.getBookReservations();
         double totalPrice = 0.0;
 
-        for (BookReservation b : bookReservations){
+        for (BookReservation b : bookReservations) {
             totalPrice += b.getPricePerNight();
         }
 
-        ShowReservationsToBookListdto dto = new ShowReservationsToBookListdto(bookReservations,totalPrice);
-
-
+        ShowReservationsToBookListdto dto = new ShowReservationsToBookListdto(bookReservations, totalPrice);
         model.addAttribute("dtoListReservations", dto);
 
         return "bookingList";
     }
 
     @PostMapping("/clear")
-    public String bookNow(){
+    public String bookNow() {
 
         BookList bookList = this.bookListRepository.findById(102L).orElseThrow(() -> new BookListNotFoundException(102L));
-
         List<BookReservation> bookReservations = bookList.getBookReservations();
-
-        /*for (BookReservation bookReservation : bookReservations){
-            BookReservationId bookReservationId = bookReservation.getId();
-
-            this.bookReservationRepository.deleteById(bookReservationId);
-        }*/
-
         this.bookReservationRepository.deleteAll(bookReservations);
 
         return "redirect:/bookings";

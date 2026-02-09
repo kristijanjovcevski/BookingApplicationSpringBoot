@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.time.LocalDateTime;
 
 @Controller
-public class ReservationsController {
+public class ReservationController {
 
     private final ReservationService reservationService;
     private final ApartmentService apartmentService;
@@ -30,10 +30,10 @@ public class ReservationsController {
     private final BookReservationRepository bookReservationRepository;
 
 
-    public ReservationsController(ReservationService reservationService,
-                                  ApartmentService apartmentService,
-                                  BookListRepository bookListRepository,
-                                  BookReservationRepository bookReservationRepository) {
+    public ReservationController(ReservationService reservationService,
+                                 ApartmentService apartmentService,
+                                 BookListRepository bookListRepository,
+                                 BookReservationRepository bookReservationRepository) {
         this.reservationService = reservationService;
         this.apartmentService = apartmentService;
         this.bookListRepository = bookListRepository;
@@ -65,7 +65,6 @@ public class ReservationsController {
 
     @GetMapping("/add/reservation/booklist/{id}")
     public String getReservationToBookListPage(Model model , @PathVariable Long id){
-
 
         Reservation reservation = this.reservationService.findById(id);
 

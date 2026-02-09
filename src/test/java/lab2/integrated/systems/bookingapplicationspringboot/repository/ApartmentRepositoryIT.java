@@ -1,7 +1,6 @@
-package lab2.integrated.systems.bookingapplicationspringboot.repository.integration;
+package lab2.integrated.systems.bookingapplicationspringboot.repository;
 
 import lab2.integrated.systems.bookingapplicationspringboot.model.Apartment;
-import lab2.integrated.systems.bookingapplicationspringboot.repository.ApartmentRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -11,7 +10,7 @@ import org.springframework.test.context.ActiveProfiles;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @DataJpaTest
 @ActiveProfiles("test")
-class ApartmentRepositoryIntegrationTest {
+class ApartmentRepositoryIT {
 
     @Autowired
     private ApartmentRepository apartmentRepository;

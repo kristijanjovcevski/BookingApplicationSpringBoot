@@ -1,8 +1,7 @@
-package lab2.integrated.systems.bookingapplicationspringboot.repository.integration;
+package lab2.integrated.systems.bookingapplicationspringboot.repository;
 
 import lab2.integrated.systems.bookingapplicationspringboot.model.Person;
 import lab2.integrated.systems.bookingapplicationspringboot.model.enums.Role;
-import lab2.integrated.systems.bookingapplicationspringboot.repository.PersonRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -12,12 +11,12 @@ import java.util.Optional;
 
 @DataJpaTest
 @ActiveProfiles("test")
-class PersonRepositoryIntegrationTest {
+class PersonRepositoryIT {
 
     private final PersonRepository personRepository;
 
     @Autowired
-    public PersonRepositoryIntegrationTest(PersonRepository personRepository) {
+    public PersonRepositoryIT(PersonRepository personRepository) {
         this.personRepository = personRepository;
     }
     @BeforeEach

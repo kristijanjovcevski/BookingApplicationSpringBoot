@@ -39,8 +39,4 @@ public class BookList {
     public String toString() {
         return "BookList{id=" + id + "}";
     }
-
-
-
-
 }
