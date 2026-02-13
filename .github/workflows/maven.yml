@@ -49,7 +49,10 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven (with Testcontainers debug)
-      run: mvn -B -Dorg.slf4j.simpleLogger.log.org.testcontainers=DEBUG verify --file pom.xml
+      run: mvn -B verify --file pom.xml
+      env:
+        TESTCONTAINERS_CHECKS_DISABLE: true
+        TESTCONTAINERS_RYUK_DISABLED: true
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     # - name: Update dependency graph
