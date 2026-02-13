@@ -21,10 +21,27 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Check Docker version
+    - name: Docker & env diagnostics
       run: |
-        docker version
-        docker info
+       echo "=== ENV VARS ==="
+       env | sort
+       
+       echo "=== DOCKER CONTEXT ==="
+       docker context ls
+       
+       echo "=== DOCKER CLIENT/SERVER ==="
+       docker version
+       docker info
+
+       echo "=== SOCKET ==="
+       ls -l /var/run/docker.sock || true
+       stat /var/run/docker.sock || true
+
+       echo "=== DOCKER HOST VAR ==="
+       echo "DOCKER_HOST=$DOCKER_HOST"
+       echo "DOCKER_API_VERSION=$DOCKER_API_VERSION"
+       echo "DOCKER_CONTEXT=$DOCKER_CONTEXT"
+
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
