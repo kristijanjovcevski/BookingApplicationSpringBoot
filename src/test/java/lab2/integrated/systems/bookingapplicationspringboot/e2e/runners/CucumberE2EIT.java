@@ -18,5 +18,5 @@ import static io.cucumber.junit.platform.engine.Constants.*;
         " html:target/cucumber-report.html, json:target/cucumber.json")
 /*@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME,
         value = "@smoke and @regression")*/
-public class CucumberRunner {
+public class CucumberE2EIT {
 }
