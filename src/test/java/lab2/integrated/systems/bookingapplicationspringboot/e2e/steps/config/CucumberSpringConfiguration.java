@@ -9,10 +9,12 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.ActiveProfiles;
 
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@EnableAutoConfiguration(exclude = {EmbeddedDatabaseAutoConfiguration.class})
+@ActiveProfiles("integration")
 @Testcontainers
 @CucumberContextConfiguration
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("integration")
 public class CucumberSpringConfiguration {
 
     @Container
