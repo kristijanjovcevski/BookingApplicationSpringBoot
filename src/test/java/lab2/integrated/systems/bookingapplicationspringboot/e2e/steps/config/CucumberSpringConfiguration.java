@@ -11,6 +11,7 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 @Testcontainers
 @CucumberContextConfiguration
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("integration")
 public class CucumberSpringConfiguration {
 
     @Container
