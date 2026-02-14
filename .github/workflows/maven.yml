@@ -49,7 +49,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven (with Testcontainers debug)
-      run: mvn -B verify --file pom.xml
+      run: mvn verify -Dspring.profiles.active=integration
       env:
         TESTCONTAINERS_CHECKS_DISABLE: true
         TESTCONTAINERS_RYUK_DISABLED: true
